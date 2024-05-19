@@ -7,8 +7,10 @@ import 'package:mismatchh/constants/miscellaneous.dart';
 import 'package:mismatchh/constants/strings.dart';
 import 'package:mismatchh/provider/auth_provider.dart';
 import 'package:mismatchh/provider/dashboard_provider.dart';
+import 'package:mismatchh/provider/home_provider.dart';
 import 'package:mismatchh/provider/theme_provider.dart';
 import 'package:mismatchh/shared_preference/shared_preference.dart';
+import 'package:mismatchh/views/dashboard/main_screen.dart';
 import 'package:mismatchh/views/onboarding/onboarding_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
@@ -34,6 +36,7 @@ Future<void> main() async {
     ChangeNotifierProvider(create: (context) => AuthProvider()),
     ChangeNotifierProvider(create: (context) => ThemeProvider()),
     ChangeNotifierProvider(create: (context) => DashboardProvider()),
+    ChangeNotifierProvider(create: (context) => HomeProvider()),
   ], child: const MyApp()));
 }
 
@@ -63,7 +66,7 @@ class MyApp extends StatelessWidget {
               scaffoldBackgroundColor: kBlack,
             ),
             themeAnimationCurve: Curves.easeIn,
-            home: const OnboardingScreen(),
+            home: const MainScreen(),
           );
         },
       ),

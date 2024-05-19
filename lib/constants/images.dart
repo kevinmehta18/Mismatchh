@@ -8,3 +8,4 @@ const String chatOutline = 'assets/images/chat_outline.svg';
 const String chatFilled = 'assets/images/chat_filled.svg';
 const String profileOutline = 'assets/images/profile_outline.svg';
 const String profileFilled = 'assets/images/profile_filled.svg';
+const String preferences = 'assets/images/preferences.svg';

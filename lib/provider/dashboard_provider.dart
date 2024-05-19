@@ -17,4 +17,14 @@ class DashboardProvider extends ChangeNotifier {
     isLoading = false;
     notifyListeners();
   }
+
+
+  void onTapped(int index) {
+    if (index == 0) {
+      navigationQueue.clear();
+    }
+    currentIndex = index;
+    navigationQueue.add(index);
+    notifyListeners();
+  }
 }

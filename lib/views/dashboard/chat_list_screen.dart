@@ -10,6 +10,6 @@ class ChatListScreen extends StatefulWidget {
 class _ChatListScreenState extends State<ChatListScreen> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: const Text("Chat List Screen"));
+    return const Center(child: Text("Chat List Screen"));
   }
 }

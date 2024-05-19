@@ -9,9 +9,9 @@ List<BottomNavigationBarItem> bottomBarItems = [
         padding: const EdgeInsets.all(3.0),
         child: SvgPicture.asset(
           hamburger,
-          fit: BoxFit.scaleDown,
-          height: 20,
-          width: 20,
+          // fit: BoxFit.scaleDown,
+          // height: 20,
+          // width: 20,
           // colorFilter: const ColorFilter.mode(kBlack, BlendMode.srcIn),
         ),
       ),
@@ -19,10 +19,10 @@ List<BottomNavigationBarItem> bottomBarItems = [
         padding: const EdgeInsets.all(3.0),
         child: SvgPicture.asset(
           hamburger,
-          fit: BoxFit.scaleDown,
-          height: 20,
+          // fit: BoxFit.scaleDown,
+          // height: 20,
           // colorFilter: const ColorFilter.mode(kWhite, BlendMode.srcIn),
-          width: 20,
+          // width: 20,
         ),
       )),
   BottomNavigationBarItem(
@@ -31,9 +31,9 @@ List<BottomNavigationBarItem> bottomBarItems = [
       padding: const EdgeInsets.all(3.0),
       child: SvgPicture.asset(
         heartFilled,
-        fit: BoxFit.scaleDown,
-        height: 20,
-        width: 20,
+        // fit: BoxFit.scaleDown,
+        // height: 20,
+        // width: 20,
         // colorFilter: const ColorFilter.mode(kWhite, BlendMode.srcIn),
       ),
     ),
@@ -41,8 +41,8 @@ List<BottomNavigationBarItem> bottomBarItems = [
       padding: const EdgeInsets.all(3.0),
       child: SvgPicture.asset(
         heartOutline,
-        fit: BoxFit.scaleDown,
-        height: 18,
+        // fit: BoxFit.scaleDown,
+        // height: 18,
         // colorFilter: const ColorFilter.mode(kBlack, BlendMode.srcIn),
       ),
     ),
@@ -52,7 +52,9 @@ List<BottomNavigationBarItem> bottomBarItems = [
       icon: Padding(
         padding: const EdgeInsets.all(3.0),
         child: SvgPicture.asset(
-          chatOutline, height: 20,
+          chatOutline,
+          // fit: BoxFit.scaleDown,
+          // height: 20,
           // color: kPrimaryColor,
           // colorFilter: const ColorFilter.mode(kBlack, BlendMode.srcIn),
         ),
@@ -60,7 +62,9 @@ List<BottomNavigationBarItem> bottomBarItems = [
       activeIcon: Padding(
         padding: const EdgeInsets.all(3.0),
         child: SvgPicture.asset(
-          chatFilled, fit: BoxFit.scaleDown, height: 20,
+          chatFilled,
+          // fit: BoxFit.scaleDown,
+          // height: 20,
           // color: kPrimaryColor,
           // colorFilter: const ColorFilter.mode(kWhite, BlendMode.srcIn),
         ),
@@ -71,7 +75,8 @@ List<BottomNavigationBarItem> bottomBarItems = [
       padding: const EdgeInsets.all(3.0),
       child: SvgPicture.asset(
         profileOutline,
-        height: 20,
+        // fit: BoxFit.scaleDown,
+        // height: 20,
         // colorFilter: const ColorFilter.mode(kBlack, BlendMode.srcIn),
       ),
     ),
@@ -79,8 +84,9 @@ List<BottomNavigationBarItem> bottomBarItems = [
       padding: const EdgeInsets.all(3.0),
       child: SvgPicture.asset(
         profileFilled,
+        // fit: BoxFit.scaleDown,
         // colorFilter: const ColorFilter.mode(kWhite, BlendMode.srcIn),
-        height: 20,
+        // height: 20,
       ),
     ),
   ),
