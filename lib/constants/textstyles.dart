@@ -5,12 +5,16 @@ const TextStyle text40Bold = TextStyle(
   fontWeight: FontWeight.w700,
 );
 
-const TextStyle text12Medium = TextStyle(
+const TextStyle text12SemiBold = TextStyle(
   fontSize: 12,
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w600,
 );
 
-const TextStyle text20SemiBold = TextStyle(
-  fontSize: 20,
-  fontWeight: FontWeight.w500,
+const TextStyle text18Regular = TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.w400,
+);
+const TextStyle text18SemiBold = TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.w600,
 );

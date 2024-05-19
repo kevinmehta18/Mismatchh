@@ -5,7 +5,9 @@ import 'package:mismatchh/constants/colors.dart';
 import 'package:mismatchh/constants/images.dart';
 import 'package:mismatchh/constants/strings.dart';
 import 'package:mismatchh/constants/textstyles.dart';
+import 'package:mismatchh/navigation/route_transition.dart';
 import 'package:mismatchh/provider/theme_provider.dart';
+import 'package:mismatchh/views/dashboard/main_screen.dart';
 import 'package:provider/provider.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -31,112 +33,88 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           selector: (ctx, themeProvider) => themeProvider.isDarkMode,
           builder: (BuildContext context, isDarkMode, Widget? child) {
             return OnBoardingSlider(
-              totalPage: 3,
-              headerBackgroundColor: Colors.transparent,
-              hasSkip: true,
-              skipTextButton: const Text(
-                skip,
-                style: text12Medium,
-              ),
-              controllerColor: isDarkMode ? kWhite : kBlack,
-              finishButtonStyle: FinishButtonStyle(
-                shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(16))),
-                backgroundColor: isDarkMode ? kWhite : kBlack,
-              ),
-              background: const [
-                SizedBox(),
-                SizedBox(),
-                SizedBox(),
-              ],
-              speed: 1.0,
-              pageBodies: [
-                Container(
-                  alignment: Alignment.bottomCenter,
-                  width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      SizedBox(
-                        child: Lottie.asset(onBoarding1Animation),
-                      ),
-                      const Text(
-                        onBoarding1Title,
-                        textAlign: TextAlign.center,
-                        style: text40Bold,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const Text(
-                        onBoarding1Description,
-                        textAlign: TextAlign.center,
-                        style: text20SemiBold,
-                      ),
-                    ],
-                  ),
+                totalPage: 3,
+                headerBackgroundColor: Colors.transparent,
+                hasSkip: true,
+                skipTextButton: Text(
+                  skip,
+                  style: text12SemiBold.copyWith(
+                      color: isDarkMode ? kWhite : kBlack),
                 ),
-                Container(
-                  alignment: Alignment.bottomCenter,
-                  width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      SizedBox(
-                        child: Lottie.asset(onBoarding2Animation),
-                      ),
-                      const Text(
-                        onBoarding2Title,
-                        textAlign: TextAlign.center,
-                        style: text40Bold,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const Text(
-                        onBoarding2Description,
-                        textAlign: TextAlign.center,
-                        style: text20SemiBold,
-                      ),
-                    ],
-                  ),
+                controllerColor: isDarkMode ? kWhite : kBlack,
+                centerBackground: true,
+                finishButtonText: continue1,
+                finishButtonTextStyle: text18SemiBold.copyWith(
+                  color: kWhite,
                 ),
-                Container(
-                  alignment: Alignment.bottomCenter,
-                  width: MediaQuery.of(context).size.width,
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      SizedBox(
-                        child: Lottie.asset(onBoarding3Animation),
-                      ),
-                      const Text(
-                        onBoarding3Title,
-                        textAlign: TextAlign.center,
-                        style: text40Bold,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const Text(
-                        onBoarding3Description,
-                        textAlign: TextAlign.center,
-                        style: text20SemiBold,
-                      ),
-                    ],
-                  ),
+                onFinish: () => RouteTransitions.navigateAndRemoveUntil(
+                    context, const MainScreen(), 'Login'),
+                finishButtonStyle: FinishButtonStyle(
+                  elevation: 3,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(16))),
+                  backgroundColor: isDarkMode ? kWhite : kBlack,
                 ),
-              ],
-            );
+                background: List.generate(
+                    3,
+                    (index) => const SizedBox(
+                          width: 0,
+                          height: 0,
+                        )),
+                speed: 1.0,
+                pageBodies: List.generate(3, (index) {
+                  String title = index == 0
+                      ? onBoarding1Title
+                      : index == 1
+                          ? onBoarding2Title
+                          : onBoarding3Title;
+                  String description = index == 0
+                      ? onBoarding1Description
+                      : index == 1
+                          ? onBoarding2Description
+                          : onBoarding3Description;
+                  String animation = index == 0
+                      ? onBoarding1Animation
+                      : index == 1
+                          ? onBoarding2Animation
+                          : onBoarding3Animation;
+                  return _buildOnboardingPage(title, description, animation);
+                }));
           },
         );
       },
+    );
+  }
+
+  Widget _buildOnboardingPage(
+      String title, String description, String animation) {
+    return Container(
+      alignment: Alignment.bottomCenter,
+      width: MediaQuery.of(context).size.width,
+      padding: const EdgeInsets.symmetric(horizontal: 40),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          SizedBox(
+            height: MediaQuery.sizeOf(context).height * 0.5,
+            child: Lottie.asset(animation),
+          ),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: text40Bold,
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Text(
+            description,
+            textAlign: TextAlign.center,
+            style: text18Regular,
+          ),
+        ],
+      ),
     );
   }
 }

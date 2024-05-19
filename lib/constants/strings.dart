@@ -6,3 +6,4 @@ const String onBoarding2Description = 'Embrace the dating world armed with tools
 const String onBoarding3Title = 'Your Journey of Connection';
 const String onBoarding3Description = 'Explore essentials and discover new connections';
 const String skip = 'Skip';
+const String continue1 = 'Continue';
