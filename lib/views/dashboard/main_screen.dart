@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mismatchh/constants/colors.dart';
 import 'package:mismatchh/constants/strings.dart';
-import 'package:mismatchh/provider/dashboard_provider.dart';
+import 'package:mismatchh/provider/dashboard/dashboard_provider.dart';
 import 'package:mismatchh/provider/theme_provider.dart';
 import 'package:mismatchh/views/dashboard/chat_list_screen.dart';
 import 'package:mismatchh/views/dashboard/home_screen.dart';

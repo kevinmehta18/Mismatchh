@@ -13,3 +13,6 @@ const String yes = 'Yes';
 const String no = 'No';
 const String dislike = 'Dislike';
 const String like = 'Like';
+const String ago = 'ago';
+const String basicInfo = 'Basic Info';
+const String interests = 'Interests';

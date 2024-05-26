@@ -3,7 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mismatchh/main.dart';
 import 'package:mismatchh/provider/auth_provider.dart';
-import 'package:mismatchh/provider/home_provider.dart';
+import 'package:mismatchh/provider/dashboard/home_provider.dart';
 import 'package:mismatchh/shared_preference/shared_preference.dart';
 import 'package:mismatchh/utils/toasts.dart';
 import 'package:mismatchh/views/auth/login_screen.dart';

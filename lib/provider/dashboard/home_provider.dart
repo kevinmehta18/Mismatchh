@@ -2,7 +2,7 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 import 'package:mismatchh/api_service/api_service.dart';
-import 'package:mismatchh/modals/home/users_list.dart';
+import 'package:mismatchh/modals/dashboard/users_list.dart';
 
 class HomeProvider extends ChangeNotifier {
   bool isLoading = false;

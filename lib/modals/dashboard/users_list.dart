@@ -25,20 +25,23 @@ class UsersList {
 class UsersListData {
   UsersListData({
       this.imageUrl, 
-      this.name, 
-      this.age, 
+      this.id,
+      this.name,
+      this.age,
       this.interests, 
       this.distance,});
 
   UsersListData.fromJson(dynamic json) {
     imageUrl = json['imageUrl'];
     name = json['name'];
+    id = json['id'];
     age = json['age'];
     interests = json['interests'] != null ? json['interests'].cast<String>() : [];
     distance = json['distance'];
   }
   String? imageUrl;
   String? name;
+  String? id;
   int? age;
   List<String>? interests;
   String? distance;

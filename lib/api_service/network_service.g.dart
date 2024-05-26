@@ -32,7 +32,7 @@ class _NetworkService implements NetworkService {
     )
             .compose(
               _dio.options,
-              'https://mocki.io/v1/5ffbf982-5ccf-4f8a-b0de-6b53f73c180f',
+              'https://mocki.io/v1/e3f2f3ed-8d4e-45ea-94e7-8e7906a3e5a5',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -42,6 +42,33 @@ class _NetworkService implements NetworkService {
               baseUrl,
             ))));
     final value = UsersList.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
+  Future<ChatList> getChatList() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<ChatList>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              'https://mocki.io/v1/a9f41f2a-9592-4162-a12b-81f5db0a3582',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = ChatList.fromJson(_result.data!);
     return value;
   }
 
