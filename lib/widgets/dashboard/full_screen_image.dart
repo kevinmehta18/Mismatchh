@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +31,7 @@ class FullScreenGalleryViewState extends State<FullScreenGalleryView> {
     super.initState();
     _currentIndex = widget.initialIndex;
     _pageController = PageController(initialPage: widget.initialIndex);
+
   }
 
   Future<bool> _onWillPop() async {
@@ -53,6 +56,7 @@ class FullScreenGalleryViewState extends State<FullScreenGalleryView> {
               )),
         ),
         body: Stack(
+          alignment: Alignment.bottomCenter,
           children: [
             PageView.builder(
               physics: const ClampingScrollPhysics(),
@@ -73,54 +77,56 @@ class FullScreenGalleryViewState extends State<FullScreenGalleryView> {
                 );
               },
             ),
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Selector<ThemeProvider, bool>(
-                selector: (ctx, themeProvider) => themeProvider.isDarkMode,
-                builder: (BuildContext context, isDarkMode, Widget? child) {
-                  return Container(
-                    height: 100,
-                    color: isDarkMode ? kWhite : kBlack,
-                    child: Center(
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: widget.images.length,
-                        itemBuilder: (context, index) {
-                          return GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                _currentIndex = index;
-                                _pageController.jumpToPage(index);
-                              });
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.all(8),
-                              width: 80,
-                              padding: const EdgeInsets.all(4),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color:
-                                      _currentIndex == index ? kYellow : kGrey,
+            Selector<ThemeProvider, bool>(
+              selector: (ctx, themeProvider) => themeProvider.isDarkMode,
+              builder: (BuildContext context, isDarkMode, Widget? child) {
+                return Container(
+                  height: 100,
+                  decoration: BoxDecoration(
+                    color: isDarkMode ? kWhite.withOpacity(0.2) : kBlack.withOpacity(0.2),
+                  ),
+                  child: ClipRRect(
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+                      child: Center(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: widget.images.length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  _currentIndex = index;
+                                  _pageController.jumpToPage(index);
+                                });
+                              },
+                              child: Container(
+                                margin: const EdgeInsets.all(8),
+                                width: 80,
+                                padding: const EdgeInsets.all(4),
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color:
+                                        _currentIndex == index ? kYellow : kGrey,
+                                  ),
+                                ),
+                                child: CachedNetworkImage(
+                                  imageUrl: widget.images[index],
+                                  fadeOutDuration: kAnimationDuration,
+                                  fadeInDuration: kAnimationDuration,
+                                  fadeOutCurve: Curves.easeIn,
+                                  fadeInCurve: Curves.easeOut,
                                 ),
                               ),
-                              child: CachedNetworkImage(
-                                imageUrl: widget.images[index],
-                                fadeOutDuration: kAnimationDuration,
-                                fadeInDuration: kAnimationDuration,
-                                fadeOutCurve: Curves.easeIn,
-                                fadeInCurve: Curves.easeOut,
-                              ),
-                            ),
-                          );
-                        },
+                            );
+                          },
+                        ),
                       ),
                     ),
-                  );
-                },
-              ),
+                  ),
+                );
+              },
             ),
           ],
         ),

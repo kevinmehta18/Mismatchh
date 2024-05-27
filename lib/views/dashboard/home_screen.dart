@@ -8,9 +8,9 @@ import 'package:mismatchh/constants/strings.dart';
 import 'package:mismatchh/constants/textstyles.dart';
 import 'package:mismatchh/provider/dashboard/home_provider.dart';
 import 'package:mismatchh/provider/theme_provider.dart';
-import 'package:mismatchh/views/dashboard/profiel_detail_screen.dart';
+import 'package:mismatchh/views/dashboard/profile_detail_screen.dart';
 import 'package:mismatchh/widgets/dashboard/swipe_indicator_tag.dart';
-import 'package:mismatchh/widgets/dashboard/swiping_card.dart';
+import 'package:mismatchh/widgets/dashboard/user_preview_card.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ? Column(
                     children: [
                       Flexible(
-                        child: CardSwiper(
+                        child: CardSwiper(padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 30),
                           cardsCount: provider.usersList.length,
                           cardBuilder: (BuildContext context, index,
                               percentThresholdX, percentThresholdY) {
@@ -100,7 +100,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                             return Stack(
                               children: [
-                                SwipingCard(
+                                UserPreviewCard(
                                   imageUrl: profileImg,
                                   name: name,
                                   age: age,
@@ -137,25 +137,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           },
                         ),
                       ),
-                      Visibility(
-                        visible: provider.usersList.isNotEmpty,
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Selector<ThemeProvider, bool>(
-                            selector: (ctx, themeProvider) =>
-                                themeProvider.isDarkMode,
-                            builder: (BuildContext context, isDarkMode,
-                                Widget? child) {
-                              return _buildBottomButtons(
-                                isDarkMode,
-                              );
-                            },
-                          ),
-                        ),
-                      ),
                     ],
                   )
-                : Text('No data');
+                : const Text('No data');
       },
     );
   }
@@ -182,46 +166,6 @@ class _HomeScreenState extends State<HomeScreen> {
         horizontalPadding: 15);
   }
 
-  Widget _buildBottomButtons(
-    bool isDarkMode,
-  ) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        FloatingActionButton(
-          onPressed: controller.undo,
-          shape: const CircleBorder(),
-          backgroundColor: isDarkMode ? kWhite : kBlack,
-          child: const Icon(
-            Icons.undo,
-            color: kGreen,
-            size: 30,
-          ),
-        ),
-        FloatingActionButton(
-          shape: const CircleBorder(),
-          backgroundColor: isDarkMode ? kWhite : kBlack,
-          onPressed: () => controller.swipe(CardSwiperDirection.left),
-          child: const Icon(
-            Icons.clear_rounded,
-            color: kBlue,
-            size: 30,
-          ),
-        ),
-        FloatingActionButton(
-          shape: const CircleBorder(),
-          backgroundColor: isDarkMode ? kWhite : kBlack,
-          onPressed: () => controller.swipe(CardSwiperDirection.right),
-          child: const Icon(
-            Icons.favorite,
-            color: kRed,
-            size: 30,
-          ),
-        ),
-      ],
-    );
-  }
 
   bool _onSwipe(
     int previousIndex,

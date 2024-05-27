@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:mismatchh/constants/colors.dart';
 import 'package:mismatchh/constants/miscellaneous.dart';
-import 'package:mismatchh/widgets/dashboard/full_scren_image.dart';
+import 'package:mismatchh/widgets/dashboard/full_screen_image.dart';
 
 class ImageGalleryView extends StatefulWidget {
   final List<String> imageList;
@@ -119,7 +119,6 @@ class ImageGalleryViewState extends State<ImageGalleryView> {
         ),
       ),
     ).then((value) {
-      print(value);
       setState(() {
         _currentIndex = value;
         _pageController.jumpToPage(

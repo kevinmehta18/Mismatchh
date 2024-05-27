@@ -16,5 +16,8 @@ abstract class NetworkService {
   @GET(chatList)
   Future<ChatList> getChatList();
 
+  @GET(likedYouList)
+  Future<UsersList> getLikedYouList();
+
 
 }

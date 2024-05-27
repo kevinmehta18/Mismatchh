@@ -63,11 +63,14 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
   Widget _buildNestedScrollView() {
     return NestedScrollView(
         physics: const ClampingScrollPhysics(),
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        scrollBehavior: const ScrollBehavior().copyWith(
+          physics: const NeverScrollableScrollPhysics(),
+        ),
         controller: _scrollController,
         headerSliverBuilder: (ctx, innerBoxIsScrolled) => [
               _buildSliverAppBar(),
             ],
-
         body: _buildBody());
   }
 
@@ -86,7 +89,6 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
   Widget _buildFlexibleSpaceBar() {
     return FlexibleSpaceBar(
       titlePadding: const EdgeInsets.symmetric(horizontal: 50, vertical: 20),
-
       background: _buildProductImageList(),
     );
   }
@@ -102,15 +104,17 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
   Widget _buildBody() {
     return Padding(
       padding: const EdgeInsets.only(right: 15, left: 15, top: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildBasicInfo(),
-          Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              child: _buildInterests()),
-          _buildLanguages()
-        ],
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            _buildBasicInfo(),
+            Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: _buildInterests()),
+            _buildLanguages()
+          ],
+        ),
       ),
     );
   }
@@ -176,7 +180,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
   }
 
   _buildLanguages() {
-    List<String> languages = [
+    List<String> languageList = [
       "English",
       "Hindi",
       "Marathi",
@@ -189,7 +193,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _buildHeader(interests),
+        _buildHeader(languages),
         const SizedBox(
           height: 10,
         ),
@@ -199,7 +203,7 @@ class _ProfileDetailScreenState extends State<ProfileDetailScreen> {
             return Wrap(
               spacing: 10,
               runSpacing: 10,
-              children: languages.map((language) {
+              children: languageList.map((language) {
                 return Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 6),

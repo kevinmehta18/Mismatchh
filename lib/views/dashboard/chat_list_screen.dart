@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mismatchh/constants/colors.dart';
 import 'package:mismatchh/provider/dashboard/chat_provider.dart';
+import 'package:mismatchh/views/dashboard/chat_screen.dart';
 import 'package:mismatchh/widgets/dashboard/chat_tile.dart';
 import 'package:provider/provider.dart';
 
@@ -35,10 +36,9 @@ class _ChatListScreenState extends State<ChatListScreen> {
         return SafeArea(
           child: RefreshIndicator(
             color: kYellow,
-            onRefresh: () {
+            onRefresh: () async {
               provider.chatList.clear();
-              getChatList();
-              return Future.value(true);
+              await getChatList();
             },
             child: ListView.builder(
               shrinkWrap: true,
@@ -82,13 +82,13 @@ class _ChatListScreenState extends State<ChatListScreen> {
       lastMessage: lastMessage,
       time: time,
       onTap: () {
-        onTap(index);
+        onTap(name, profileImg);
       },
     );
   }
 
-  onTap(int index) {
-    print(index);
+  onTap(String name, String profileImg) {
+    Navigator.push(context, MaterialPageRoute(builder: (ctx)=> ChatScreen(name: name, profileImg: profileImg,)));
   }
 
   /// API Calls ---------------------------------------------

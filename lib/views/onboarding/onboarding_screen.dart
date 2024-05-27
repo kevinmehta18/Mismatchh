@@ -1,7 +1,10 @@
+import 'package:animate_do/animate_do.dart';
+import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mismatchh/constants/colors.dart';
 import 'package:mismatchh/constants/images.dart';
+import 'package:mismatchh/constants/miscellaneous.dart';
 import 'package:mismatchh/constants/strings.dart';
 import 'package:mismatchh/constants/textstyles.dart';
 import 'package:mismatchh/navigation/route_transition.dart';
@@ -105,22 +108,34 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(
-            height: MediaQuery.sizeOf(context).height * 0.45,
-            child: Lottie.asset(animation),
+          ElasticIn(
+            duration: kAnimationDuration,
+            curve: Curves.easeIn,
+            child: SizedBox(
+              height: MediaQuery.sizeOf(context).height * 0.45,
+              child: Lottie.asset(animation),
+            ),
           ),
-          Text(
-            title,
-            textAlign: TextAlign.center,
-            style: text32Bold,
+          FadeInUp(
+            duration: kAnimationDuration,
+            curve: Curves.easeIn,
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: text32Bold,
+            ),
           ),
           const SizedBox(
             height: 10,
           ),
-          Text(
-            description,
-            textAlign: TextAlign.center,
-            style: text18Regular,
+          FadeInUp(
+            duration: kAnimationDuration,
+            curve: Curves.easeIn,
+            child: Text(
+              description,
+              textAlign: TextAlign.center,
+              style: text18Regular,
+            ),
           ),
         ],
       ),

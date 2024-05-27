@@ -12,12 +12,11 @@ import 'package:mismatchh/provider/dashboard/dashboard_provider.dart';
 import 'package:mismatchh/provider/dashboard/home_provider.dart';
 import 'package:mismatchh/provider/theme_provider.dart';
 import 'package:mismatchh/shared_preference/shared_preference.dart';
-import 'package:mismatchh/views/dashboard/main_screen.dart';
 import 'package:mismatchh/views/onboarding/onboarding_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
 
-  GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyHttpOverrides extends HttpOverrides {
   @override
