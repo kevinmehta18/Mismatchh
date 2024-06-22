@@ -1,0 +1,11 @@
+const String onBoarding1Animation = 'assets/images/onboarding1.json';
+const String onBoarding2Animation = 'assets/images/onboarding2.json';
+const String onBoarding3Animation = 'assets/images/onboarding3.json';
+const String hamburger = 'assets/images/hamburger.svg';
+const String heartOutline = 'assets/images/heart_outline.svg';
+const String heartFilled = 'assets/images/heart_filled.svg';
+const String chatOutline = 'assets/images/chat_outline.svg';
+const String chatFilled = 'assets/images/chat_filled.svg';
+const String profileOutline = 'assets/images/profile_outline.svg';
+const String profileFilled = 'assets/images/profile_filled.svg';
+const String preferences = 'assets/images/preferences.svg';
