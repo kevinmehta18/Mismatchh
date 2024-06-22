@@ -2,6 +2,8 @@ import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:mismatchh/main.dart';
 
+import 'app_router.dart';
+
 class RouteTransitions {
   // Global navigator key
 
